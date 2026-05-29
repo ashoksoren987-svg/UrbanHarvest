@@ -1,0 +1,154 @@
+export default function GroceryStoreWebsite() {
+  return (
+    <div className="min-h-screen bg-white text-gray-800 font-sans">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-green-100 to-lime-50">
+        <div className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
+              Fresh Groceries <br /> Delivered Daily
+            </h1>
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+              Welcome to GreenBasket — your trusted online grocery store for rice, pulses, vegetables, soyabeans, cold drinks, nuts, chocolates, biscuits, household products, petrol services, and everyday essentials.
+            </p>
+            <div className="mt-8 flex gap-4">
+              <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl shadow-lg transition">
+                Shop Now
+              </button>
+              <button className="border border-green-600 text-green-700 px-6 py-3 rounded-2xl hover:bg-green-50 transition">
+                Learn More
+              </button>
+            </div>
+          </div>
+
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop"
+              alt="Groceries"
+              className="rounded-3xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-bold">Shop by Category</h2>
+          <p className="text-gray-500 mt-3">Everything you need in one place</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { title: 'Rice', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Pulses', image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Soyabeans', image: 'https://images.unsplash.com/photo-1603048297172-c92544798d5a?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Cold Drinks', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Nuts', image: 'https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Chocolates', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Biscuits', image: 'https://images.unsplash.com/photo-1586985289906-406988974504?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Household Products', image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop' },
+            { title: 'Petrol Services', image: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=1200&auto=format&fit=crop' },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-56 w-full object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <button className="mt-4 text-green-600 font-medium hover:underline">
+                  Explore →
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="bg-green-50 py-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+          {[
+            {
+              title: 'Fast Delivery',
+              desc: 'Get your groceries delivered within hours.',
+            },
+            {
+              title: 'Fresh Products',
+              desc: 'Carefully selected fresh and healthy items.',
+            },
+            {
+              title: 'Secure Payments',
+              desc: 'Safe and easy online payment options.',
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl transition"
+            >
+              <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+              <p className="text-gray-600">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-20 px-6 text-center">
+        <h2 className="text-4xl font-bold">Stay Updated</h2>
+        <p className="mt-4 text-gray-500">
+          Subscribe to get special offers and grocery updates.
+        </p>
+
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="flex-1 border border-gray-300 rounded-2xl px-5 py-3 outline-none focus:ring-2 focus:ring-green-500"
+          />
+          <button className="bg-green-600 text-white px-6 py-3 rounded-2xl hover:bg-green-700 transition">
+            Subscribe
+          </button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-10 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div>
+            <h2 className="text-3xl font-bold">GreenBasket</h2>
+            <p className="text-gray-400 mt-2">
+              Fresh groceries at your doorstep.
+            </p>
+          </div>
+
+          <div className="text-center md:text-right">
+            <p className="text-gray-300">Contact: 6200380408</p>
+            <p className="text-gray-300">Email: ashoksoren987@gmail.com</p>
+          </div>
+
+          <div className="flex gap-6 text-gray-300">
+            <a href="#" className="hover:text-white">
+              Home
+            </a>
+            <a href="#" className="hover:text-white">
+              Products
+            </a>
+            <a href="#" className="hover:text-white">
+              About
+            </a>
+            <a href="#" className="hover:text-white">
+              Contact
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
