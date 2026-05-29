@@ -1,151 +1,435 @@
+import { ShoppingCart, Search, Truck, Phone, MapPin, Star, Clock, Mail } from 'lucide-react'
+
 export default function GroceryStoreWebsite() {
+  const categories = [
+    'Rice',
+    'Pulses',
+    'Vegetables',
+    'Soyabeans',
+    'Cold Drinks',
+    'Nuts',
+    'Chocolates',
+    'Biscuits',
+    'Household Products',
+    'Petrol Services',
+  ]
+
+  const products = [
+    {
+      name: 'Premium Rice',
+      price: '₹60/kg',
+      oldPrice: '₹80/kg',
+      discount: '25% OFF',
+      rating: '4.8',
+      delivery: '10 mins',
+      image:
+        'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+      name: 'Fresh Vegetables',
+      price: '₹40/kg',
+      oldPrice: '₹55/kg',
+      discount: '15% OFF',
+      rating: '4.6',
+      delivery: '15 mins',
+      image:
+        'https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+      name: 'Cold Drinks',
+      price: '₹99',
+      oldPrice: '₹120',
+      discount: '10% OFF',
+      rating: '4.7',
+      delivery: '12 mins',
+      image:
+        'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+      name: 'Chocolate Pack',
+      price: '₹120',
+      oldPrice: '₹150',
+      discount: '20% OFF',
+      rating: '4.9',
+      delivery: '8 mins',
+      image:
+        'https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=1200&auto=format&fit=crop',
+    },
+  ]
+
+  const offers = [
+    'Free delivery above ₹499',
+    'Get 40% OFF on first order',
+    'Buy 1 Get 1 on snacks',
+    'Weekend special discounts',
+  ]
+
+  const paymentMethods = [
+    'UPI',
+    'Google Pay',
+    'PhonePe',
+    'Paytm',
+    'Credit Card',
+    'Debit Card',
+    'Cash on Delivery',
+  ]
+
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-green-100 to-lime-50">
-        <div className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
+      {/* Navbar */}
+      <header className="sticky top-0 z-50 bg-white shadow-md">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
           <div>
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
-              Fresh Groceries <br /> Delivered Daily
-            </h1>
+            <h1 className="text-3xl font-extrabold text-green-600">GreenBasket</h1>
+            <p className="text-sm text-gray-500">Fast Grocery Delivery</p>
+          </div>
+
+          <div className="hidden md:flex items-center bg-gray-100 rounded-2xl px-4 py-2 w-full max-w-xl">
+            <Search className="w-5 h-5 text-gray-500" />
+            <input
+              type="text"
+              placeholder="Search groceries, drinks, snacks..."
+              className="bg-transparent outline-none px-3 w-full"
+            />
+          </div>
+
+          <button className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-2xl transition">
+            <ShoppingCart className="w-5 h-5" /> Cart
+          </button>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="bg-gradient-to-r from-green-100 to-lime-50 py-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="bg-green-200 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">
+              10 Minute Delivery Available
+            </span>
+
+            <h2 className="text-5xl font-extrabold mt-6 leading-tight">
+              Groceries Delivered <br /> To Your Doorstep
+            </h2>
+
             <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-              Welcome to GreenBasket — your trusted online grocery store for rice, pulses, vegetables, soyabeans, cold drinks, nuts, chocolates, biscuits, household products, petrol services, and everyday essentials.
+              Order rice, pulses, vegetables, snacks, cold drinks, household products and more with lightning-fast delivery.
             </p>
-            <div className="mt-8 flex gap-4">
-              <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl shadow-lg transition">
-                Shop Now
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <button className="bg-green-600 text-white px-7 py-4 rounded-2xl hover:bg-green-700 transition shadow-lg">
+                Start Shopping
               </button>
-              <button className="border border-green-600 text-green-700 px-6 py-3 rounded-2xl hover:bg-green-50 transition">
-                Learn More
+
+              <button className="border border-green-600 text-green-700 px-7 py-4 rounded-2xl hover:bg-green-50 transition">
+                View Offers
               </button>
             </div>
           </div>
 
-          <div className="relative">
+          <div>
             <img
               src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop"
-              alt="Groceries"
+              alt="Grocery Delivery"
               className="rounded-3xl shadow-2xl"
             />
           </div>
         </div>
       </section>
 
+      {/* Delivery Info */}
+      <section className="py-10 px-6 bg-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
+          <div className="bg-green-50 rounded-3xl p-6 flex items-center gap-4 shadow-sm">
+            <Truck className="w-10 h-10 text-green-600" />
+            <div>
+              <h3 className="font-bold text-xl">Fast Delivery</h3>
+              <p className="text-gray-600">Delivery in 10-30 minutes</p>
+            </div>
+          </div>
+
+          <div className="bg-green-50 rounded-3xl p-6 flex items-center gap-4 shadow-sm">
+            <Clock className="w-10 h-10 text-green-600" />
+            <div>
+              <h3 className="font-bold text-xl">Open Daily</h3>
+              <p className="text-gray-600">7 AM to 11 PM</p>
+            </div>
+          </div>
+
+          <div className="bg-green-50 rounded-3xl p-6 flex items-center gap-4 shadow-sm">
+            <Star className="w-10 h-10 text-green-600" />
+            <div>
+              <h3 className="font-bold text-xl">Top Rated</h3>
+              <p className="text-gray-600">Trusted by local customers</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Categories */}
       <section className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-14">
+        <div className="flex items-center justify-between mb-10">
           <h2 className="text-4xl font-bold">Shop by Category</h2>
-          <p className="text-gray-500 mt-3">Everything you need in one place</p>
+          <button className="text-green-600 font-semibold">See All</button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            { title: 'Rice', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Pulses', image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Soyabeans', image: 'https://images.unsplash.com/photo-1603048297172-c92544798d5a?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Cold Drinks', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Nuts', image: 'https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Chocolates', image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Biscuits', image: 'https://images.unsplash.com/photo-1586985289906-406988974504?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Household Products', image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop' },
-            { title: 'Petrol Services', image: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=1200&auto=format&fit=crop' },
-          ].map((item, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          {categories.map((category, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
+              className="bg-white rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition cursor-pointer"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="h-56 w-full object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold">{item.title}</h3>
-                <button className="mt-4 text-green-600 font-medium hover:underline">
-                  Explore →
-                </button>
+              <div className="w-20 h-20 bg-green-100 rounded-full mx-auto mb-4"></div>
+              <h3 className="font-semibold text-lg">{category}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Popular Products */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-10">
+            <h2 className="text-4xl font-bold">Popular Products</h2>
+            <button className="text-green-600 font-semibold">View More</button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.map((product, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition relative"
+              >
+                <span className="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full z-10">
+                  {product.discount}
+                </span>
+
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-60 w-full object-cover"
+                />
+
+                <div className="p-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-bold">{product.name}</h3>
+                    <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                      ⭐ {product.rating}
+                    </span>
+                  </div>
+
+                  <div className="mt-3 flex items-center gap-3">
+                    <p className="text-green-600 font-semibold text-xl">{product.price}</p>
+                    <p className="line-through text-gray-400">{product.oldPrice}</p>
+                  </div>
+
+                  <p className="text-sm text-gray-500 mt-2">Delivery in {product.delivery}</p>
+
+                  <div className="mt-5 space-y-3">
+                    <div className="flex items-center justify-between bg-green-50 rounded-2xl px-4 py-3">
+                      <span className="font-semibold">Total Price</span>
+                      <span className="text-green-700 font-bold text-lg">{product.price}</span>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <button className="flex-1 bg-green-600 text-white py-3 rounded-2xl hover:bg-green-700 transition">
+                        Add to Cart
+                      </button>
+
+                      <button className="px-4 py-3 border border-green-600 text-green-700 rounded-2xl hover:bg-green-50 transition">
+                        ❤️
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="bg-green-50 py-20 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-          {[
-            {
-              title: 'Fast Delivery',
-              desc: 'Get your groceries delivered within hours.',
-            },
-            {
-              title: 'Fresh Products',
-              desc: 'Carefully selected fresh and healthy items.',
-            },
-            {
-              title: 'Secure Payments',
-              desc: 'Safe and easy online payment options.',
-            },
-          ].map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl transition"
-            >
-              <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-              <p className="text-gray-600">{feature.desc}</p>
-            </div>
-          ))}
+      {/* Offer Cards */}
+      <section className="py-16 px-6 bg-green-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-10 text-center">Today's Offers</h2>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            {offers.map((offer, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-3xl p-8 shadow-md text-center hover:shadow-xl transition"
+              >
+                <h3 className="text-2xl font-bold text-green-700">Offer {index + 1}</h3>
+                <p className="mt-4 text-gray-600">{offer}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-20 px-6 text-center">
-        <h2 className="text-4xl font-bold">Stay Updated</h2>
-        <p className="mt-4 text-gray-500">
-          Subscribe to get special offers and grocery updates.
-        </p>
+      {/* Delivery App Section */}
+      <section className="py-20 px-6 bg-white text-center">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-5xl font-extrabold">Download Our Grocery App</h2>
+          <p className="mt-5 text-lg text-gray-600">
+            Shop groceries anytime with fast delivery and exciting offers.
+          </p>
 
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="flex-1 border border-gray-300 rounded-2xl px-5 py-3 outline-none focus:ring-2 focus:ring-green-500"
-          />
-          <button className="bg-green-600 text-white px-6 py-3 rounded-2xl hover:bg-green-700 transition">
-            Subscribe
-          </button>
+          <div className="mt-8 flex justify-center gap-4 flex-wrap">
+            <button className="bg-black text-white px-8 py-4 rounded-2xl hover:opacity-90 transition">
+              Google Play
+            </button>
+
+            <button className="bg-black text-white px-8 py-4 rounded-2xl hover:opacity-90 transition">
+              App Store
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Payment Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-5xl font-extrabold">Payment Methods</h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Secure and easy payment options for your orders.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {paymentMethods.map((method, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-3xl p-8 text-center shadow-md hover:shadow-xl transition"
+              >
+                <div className="text-5xl mb-4">💳</div>
+                <h3 className="text-xl font-bold">{method}</h3>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 bg-green-50 rounded-3xl p-10 shadow-md">
+            <h3 className="text-3xl font-bold text-center mb-8">Checkout Summary</h3>
+
+            <div className="space-y-5 max-w-2xl mx-auto">
+              <div className="flex justify-between text-lg">
+                <span>Subtotal</span>
+                <span>₹499</span>
+              </div>
+
+              <div className="flex justify-between text-lg">
+                <span>Delivery Charges</span>
+                <span className="text-green-700">FREE</span>
+              </div>
+
+              <div className="flex justify-between text-lg">
+                <span>Discount</span>
+                <span className="text-red-500">-₹100</span>
+              </div>
+
+              <div className="border-t pt-5 flex justify-between text-2xl font-bold">
+                <span>Total</span>
+                <span>₹399</span>
+              </div>
+
+              <button className="w-full bg-green-600 text-white py-4 rounded-2xl text-lg font-bold hover:bg-green-700 transition mt-6">
+                Proceed to Payment
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl font-bold">Customer Reviews</h2>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="bg-white rounded-3xl p-8 shadow-md">
+              <p className="text-gray-600">Very fast delivery and fresh groceries every day.</p>
+              <h3 className="mt-5 font-bold text-xl">Rahul Kumar</h3>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 shadow-md">
+              <p className="text-gray-600">Best grocery service in my local area.</p>
+              <h3 className="mt-5 font-bold text-xl">Priya Singh</h3>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 shadow-md">
+              <p className="text-gray-600">Affordable prices with amazing offers.</p>
+              <h3 className="mt-5 font-bold text-xl">Amit Das</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Offers */}
+      <section className="py-20 px-6 bg-gradient-to-r from-green-600 to-green-500 text-white text-center">
+        <h2 className="text-5xl font-extrabold">Special Daily Offers</h2>
+        <p className="mt-5 text-xl">Get up to 40% discount on groceries and household products.</p>
+
+        <button className="mt-8 bg-white text-green-700 px-8 py-4 rounded-2xl font-bold hover:bg-gray-100 transition">
+          Grab Offers
+        </button>
+      </section>
+
+      {/* Contact */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-4xl font-bold">Contact Us</h2>
+          <p className="mt-4 text-gray-600">
+            Order quickly through phone or email.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="bg-gray-50 p-8 rounded-3xl shadow-sm">
+              <Phone className="mx-auto w-10 h-10 text-green-600 mb-4" />
+              <h3 className="font-bold text-xl">Phone</h3>
+              <p className="mt-2 text-gray-600">6200380408</p>
+            </div>
+
+            <div className="bg-gray-50 p-8 rounded-3xl shadow-sm">
+              <MapPin className="mx-auto w-10 h-10 text-green-600 mb-4" />
+              <h3 className="font-bold text-xl">Delivery Area</h3>
+              <p className="mt-2 text-gray-600">Local Area Delivery Available</p>
+            </div>
+
+            <div className="bg-gray-50 p-8 rounded-3xl shadow-sm">
+              <Mail className="mx-auto w-10 h-10 text-green-600 mb-4" />
+              <h3 className="font-bold text-xl">Email</h3>
+              <p className="mt-2 text-gray-600">ashoksoren987@gmail.com</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-10 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
           <div>
-            <h2 className="text-3xl font-bold">GreenBasket</h2>
-            <p className="text-gray-400 mt-2">
-              Fresh groceries at your doorstep.
+            <h2 className="text-3xl font-bold text-green-400">GreenBasket</h2>
+            <p className="text-gray-400 mt-3 max-w-md">
+              Fast and reliable grocery delivery service inspired by Blinkit and BigBasket.
             </p>
           </div>
 
-          <div className="text-center md:text-right">
-            <p className="text-gray-300">Contact: 6200380408</p>
-            <p className="text-gray-300">Email: ashoksoren987@gmail.com</p>
+          <div>
+            <h3 className="font-bold text-xl mb-3">Quick Links</h3>
+            <div className="space-y-2 text-gray-400">
+              <p>Home</p>
+              <p>Products</p>
+              <p>Offers</p>
+              <p>Contact</p>
+            </div>
           </div>
 
-          <div className="flex gap-6 text-gray-300">
-            <a href="#" className="hover:text-white">
-              Home
-            </a>
-            <a href="#" className="hover:text-white">
-              Products
-            </a>
-            <a href="#" className="hover:text-white">
-              About
-            </a>
-            <a href="#" className="hover:text-white">
-              Contact
-            </a>
+          <div>
+            <h3 className="font-bold text-xl mb-3">Contact</h3>
+            <div className="space-y-2 text-gray-400">
+              <p>6200380408</p>
+              <p>ashoksoren987@gmail.com</p>
+            </div>
           </div>
         </div>
       </footer>
